@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ .title}}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    {{ template "header.html" . }}
+    <h1 class="mt-4 col-md-4">{{ .title }}</h1>
+    
+    <div class="mt-4 col-md-4">
+        <form  method="POST" action="create">
+            <div class="mb-3">
+              <label for="inputEmail1" class="form-label">Title</label>
+              <input type="text" class="form-control" name="title" id="inputTitle" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Description</label>
+              <input type="text" class="form-control" name="description" id="inputDescription">
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Link Image</label>
+                <input type="text" class="form-control" name="linkImg" id="inputLinkImg">
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Link Video</label>
+                <input type="text" class="form-control" name="linkVideo" id="inputLinkVideo">
+              </div>
+            <div class="mb-3 form-check">
+              <input type="checkbox" class="form-check-input" id="exampleCheck1">
+              <label class="form-check-label" for="exampleCheck1">Check me out</label>
+            </div>
+            <button type="submit" class="btn btn-primary">Create</button>
+          </form>
+    </div>
+    
+</body>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ .title }}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <h1 class="mt-4 col-md-4">{{ .title }}</h1>
+    <p class="mt-4 col-md-4">
+        <a href="trash">Trash</a>
+    </p>
+    <div class="mt-4">
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Index</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Password</th>
+                <th scope="col">Option</th>
+              </tr>
+            </thead>
+            <tbody>
+              {{ range .users}}
+              <tr>
+                <th scope="row">{{ .Id}}</th>
+                <td>{{ .Name }}</td>
+                <td>{{ .Email }}</td>
+                <td>{{ .Password }}</td>
+                <td>
+                  <form action="update/{{ .Id }}" method="PUT"> 
+                    <button type="submit" class="btn btn-primary">Update</button>
+                  </form>
+                </td>
+                <td>
+                  <form action="delete/{{ .Id }}" method="DELETE">
+                    <button type="button" class="btn btn-danger deleteUserBtn" data-id="{{ .Id }}" data-name="{{ .Name }}">Delete</button>
+                  </form>
+                </td>
+              </tr>
+              {{end}}
+            </tbody>
+          </table>
+          <script>
+            document.querySelectorAll('.deleteUserBtn').forEach(function(button) {
+                button.addEventListener('click', function() {
+                    var userId = this.getAttribute('data-id'); 
+                    var userName = this.getAttribute('data-name');                 
+                    
+                    var confirmDelete = confirm("Bạn có chắc chắn muốn xóa " + userName + "? Hành động này không thể hoàn tác.");
+                    if (confirmDelete) {
+                        fetch("delete/" + userId, {
+                            method: 'DELETE',
+                        })
+                        .then(response => {
+                            if (response.ok) {
+                                console.log("Xóa người dùng thành công.");
+                                window.location.href = `/user/account/manage`;
+                            } else {
+                                console.error("Xóa người dùng không thành công.");
+                            }
+                        })
+                        .catch(error => {
+                            console.error("Lỗi:", error);
+                        });
+                    }
+                });
+            });
+        </script>
+        
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

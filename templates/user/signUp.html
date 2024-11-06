@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ .title }}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <h1 class="mt-4 col-md-4">{{ .title }}</h1>
+    <div class="mt-4 col-md-4">
+        <form id="signUpForm" method="POST" action="/user/create">
+          <div class="mt-3">
+            <label for="exampleInputEmail1" class="form-label">Name</label>
+            <input type="text" class="form-control" name="nameInput" id="nameInput" >
+            <div id="NameHelp" class="form-text">We'll never share your name with anyone else.</div>
+          </div>  
+          <div class="mt-3">
+              <label for="exampleInputEmail1" class="form-label">Email address</label>
+              <input type="email" class="form-control" name="emailInput" id="emailInput" aria-describedby="emailHelp">
+              <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Password</label>
+              <input type="password" class="form-control" name="passwordInput" id="passwordInput">
+            </div>
+            <div class="mb-3 form-check">
+              <input type="checkbox" class="form-check-input" id="checkSignUpInfor">
+              <label class="form-check-label" for="checkSignUpInfor">Check Sign Up Information</label>
+            </div>
+            <button type="submit" class="btn btn-primary" id="submitSignUpForm">Submit</button>
+          </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
