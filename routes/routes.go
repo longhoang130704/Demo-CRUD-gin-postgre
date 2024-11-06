@@ -13,7 +13,7 @@ func InitRoutes() *gin.Engine{
 	router := gin.Default()
     router.SetFuncMap(template.FuncMap{})
     router.LoadHTMLGlob("templates/*/*")
-
+    
     router.GET("/", controllers.Home)
 
     UserRouter := router.Group("/user") 
