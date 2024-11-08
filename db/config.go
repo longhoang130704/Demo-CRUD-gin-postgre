@@ -15,8 +15,8 @@ func ConnectDatabase() {
     // dsn 1 use to run localhost; dsn 2 use to run in Docker container
     // comment line 19 to run localhost
     // comment line 18 to run in Docker
-     dsn := "host=localhost user=postgres password=12345678 dbname=golang_database port=5432 sslmode=disable"
-    // dsn := "host=postgres user=postgres password=12345678 dbname=gin_database port=5432 sslmode=disable"
+    //  dsn := "host=localhost user=postgres password=12345678 dbname=golang_database port=5432 sslmode=disable"
+    dsn := "host=postgres user=postgres password=12345678 dbname=gin_database port=5432 sslmode=disable"
 
     database, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
     if err != nil {
