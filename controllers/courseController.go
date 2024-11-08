@@ -53,10 +53,7 @@ func CreateCourse(c *gin.Context) {
 		return
 	}
 
-    c.JSON(http.StatusOK, gin.H{
-		"message": "Course created successfully",
-		"course": course,
-	})
+	c.Redirect(http.StatusSeeOther, "/course")
 }
 
 // [GET] /course/get

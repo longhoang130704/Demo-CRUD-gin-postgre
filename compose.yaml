@@ -1,0 +1,32 @@
+version: "3.8"
+services:
+  todoAppwithGin:
+    image: golang:1.23.2-alpine
+    container_name: GIN-TUTORIAL
+    working_dir: /app
+    command: sh -c "go mod tidy && go run main.go"
+    ports:
+      - "127.0.0.1:8080:8080"
+    volumes:
+      - ./:/app
+    environment:
+      - DB_HOST=postgres
+      - DB_USER=postgres
+      - DB_PASSWORD=12345678
+      - DB_NAME=gin_database   
+      - DB_PORT=5433
+    depends_on:
+      - postgres
+  postgres:
+    image: postgres:17-alpine
+    container_name: gin-postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: "12345678"
+      POSTGRES_DB: gin_database
+    ports:
+      - "5433:5433"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+volumes:
+  postgres-data:
